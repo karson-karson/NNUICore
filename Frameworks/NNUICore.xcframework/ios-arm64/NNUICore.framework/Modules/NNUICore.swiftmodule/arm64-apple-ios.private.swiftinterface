@@ -1,0 +1,792 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 6.2.3 effective-5.10 (swiftlang-6.2.3.3.21 clang-1700.6.3.2)
+// swift-module-flags: -target arm64-apple-ios16.6 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-upcoming-feature DisableOutwardActorInference -enable-upcoming-feature InferSendableFromCaptures -enable-upcoming-feature GlobalActorIsolatedTypesUsability -enable-upcoming-feature MemberImportVisibility -enable-upcoming-feature InferIsolatedConformances -enable-upcoming-feature NonisolatedNonsendingByDefault -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name NNUICore
+// swift-module-flags-ignorable:  -formal-cxx-interoperability-mode=off -interface-compiler-version 6.2.3
+import Combine
+import Compression
+import CoreGraphics
+import CoreText
+import Foundation
+import Kingfisher
+import LRUCache
+import PDFKit
+import Security
+import Swift
+import SwiftUI
+import UIKit
+import UniformTypeIdentifiers
+import WebKit
+import ZipArchive
+import _Concurrency
+import _StringProcessing
+import _SwiftConcurrencyShims
+import _WebKit_SwiftUI
+@_Concurrency.MainActor @preconcurrency public struct MiniGIconLoader : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public let iconName: Swift.String
+  @_Concurrency.MainActor @preconcurrency public let explicitGameName: Swift.String?
+  @_Concurrency.MainActor @preconcurrency public let size: CoreFoundation.CGSize?
+  @_Concurrency.MainActor @preconcurrency public var contentMode: SwiftUICore.ContentMode
+  @_Concurrency.MainActor @preconcurrency public var renderingMode: SwiftUICore.Image.TemplateRenderingMode
+  @_Concurrency.MainActor @preconcurrency public var colors: [SwiftUICore.Color]
+  @_Concurrency.MainActor @preconcurrency public var useFlexibleWidth: Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency public init(iconName: Swift.String, gameName: Swift.String? = nil, size: CoreFoundation.CGSize? = nil, contentMode: SwiftUICore.ContentMode = .fit, renderingMode: SwiftUICore.Image.TemplateRenderingMode = .original, colors: [SwiftUICore.Color] = [.primary], useFlexibleWidth: Swift.Bool = false)
+  #endif
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s8NNUICore15MiniGIconLoaderV4bodyQrvp", 0) __
+}
+extension SwiftUICore.EnvironmentValues {
+  public var miniGameName: Swift.String {
+    get
+    set
+  }
+}
+extension SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public func miniGameName(_ name: Swift.String) -> some SwiftUICore.View
+  
+}
+public struct SafeAreaInsetsKey : SwiftUICore.EnvironmentKey {
+  public static var defaultValue: SwiftUICore.EdgeInsets {
+    get
+  }
+  public typealias Value = SwiftUICore.EdgeInsets
+}
+extension SwiftUICore.EnvironmentValues {
+  public var safeAreaInsets: SwiftUICore.EdgeInsets {
+    get
+  }
+}
+extension UIKit.UIEdgeInsets {
+  public var insets: SwiftUICore.EdgeInsets {
+    get
+  }
+}
+public typealias BundlePath = NNUICore.BundleManager.BundlePath
+public typealias IconExtensionType = NNUICore.BundleManager.IconExtensionType
+public typealias AppAppearance = NNUICore.BundleManager.Appearance
+@_hasMissingDesignatedInitializers final public class BundleManager {
+  public enum BundlePath {
+    case colors
+    case fonts
+    case icons(SwiftUICore.ColorScheme)
+    case localizations
+    case gradient
+    public var folderPath: Swift.String {
+      get
+    }
+  }
+  public enum IconExtensionType : Swift.String, Swift.Sendable {
+    case pdf
+    case png
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum Appearance : Swift.String, Swift.Codable, Swift.Equatable, Swift.Sendable {
+    case light
+    case dark
+    #if compiler(>=5.3) && $NonescapableTypes
+    public init?(rawValue: Swift.String)
+    #endif
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  nonisolated(unsafe) public static let shared: NNUICore.BundleManager
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public var bundlePath: Foundation.URL? {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public var cachedIconsPath: Foundation.URL? {
+    get
+  }
+  #endif
+  final public var shouldUseCamelCaseForKeys: Swift.Bool {
+    get
+  }
+  final public var isShowDebugLogs: Swift.Bool {
+    get
+  }
+  final public var colors: [Swift.String : (any NNUICore.ColorPaletteProtocol)?] {
+    get
+  }
+  final public var fonts: [Swift.String : Swift.String] {
+    get
+  }
+  final public var icons: Foundation.NSCache<Foundation.NSString, UIKit.UIImage> {
+    get
+  }
+  final public var localizations: [Swift.String : [Swift.String : Swift.String]] {
+    get
+  }
+  final public var gradients: [Swift.String : Swift.String] {
+    get
+  }
+  @_Concurrency.MainActor final public func registerBundle()
+  final public func setShouldUseCamelCaseForKeys(_ value: Swift.Bool)
+  final public func setShowManagerDebugLogs(_ value: Swift.Bool)
+  final public func setColors<T>(from palette: T, for key: Swift.String) where T : NNUICore.ColorPaletteProtocol
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func getColors<T>(as type: T.Type = ColorPalette.self, for key: Swift.String? = nil) -> T? where T : NNUICore.ColorPaletteProtocol
+  #endif
+  final public func setFont(key: Swift.String, value: Swift.String)
+  final public func setIcon(_ image: UIKit.UIImage, for key: Swift.String)
+  final public func setLocalization(_ value: [Swift.String : Swift.String], for code: Swift.String)
+  final public func setGradients(_ value: [Swift.String : Swift.String])
+  final public func generateNNLanguage(code: Swift.String) -> NNUICore.NNLanguage
+  final public func getSupportedLanguages() -> [Swift.String]
+  final public func clearCachedIcons()
+  final public func debugLog(_ message: Swift.String)
+  @objc deinit
+}
+extension SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public func cornerRadius(_ radius: CoreFoundation.CGFloat, corners: UIKit.UIRectCorner) -> some SwiftUICore.View
+  
+  @_Concurrency.MainActor @preconcurrency public func onValueChanged<T>(of value: T, perform onChange: @escaping (T) -> Swift.Void) -> some SwiftUICore.View where T : Swift.Equatable
+  
+  @_Concurrency.MainActor @preconcurrency public func customSheet<SheetContent>(isPresented: SwiftUICore.Binding<Swift.Bool>, sheetBackground: SwiftUICore.Color = Color.black.opacity(0.5), contentBackground: SwiftUICore.Color = Color.white, cornerRadius: CoreFoundation.CGFloat = 20, closeOnTapOutside: Swift.Bool = true, showIndicator: Swift.Bool = true, @SwiftUICore.ViewBuilder content: @escaping () -> SheetContent) -> some SwiftUICore.View where SheetContent : SwiftUICore.View
+  
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency public func customSheet<Item, SheetContent>(item: SwiftUICore.Binding<Item?>, sheetBackground: SwiftUICore.Color = Color.black.opacity(0.5), contentBackground: SwiftUICore.Color = Color.white, cornerRadius: CoreFoundation.CGFloat = 20, closeOnTapOutside: Swift.Bool = true, showIndicator: Swift.Bool = true, @SwiftUICore.ViewBuilder content: @escaping (Item) -> SheetContent) -> some SwiftUICore.View where Item : Swift.Equatable, Item : Swift.Identifiable, SheetContent : SwiftUICore.View
+  
+  #endif
+}
+@_Concurrency.MainActor @preconcurrency public struct BlurredBackground : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public var cornerRadius: CoreFoundation.CGFloat?
+  @_Concurrency.MainActor @preconcurrency public var lightBlurStyle: UIKit.UIBlurEffect.Style
+  @_Concurrency.MainActor @preconcurrency public var darkBlurStyle: UIKit.UIBlurEffect.Style
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency public init(cornerRadius: CoreFoundation.CGFloat? = 0, lightBlurStyle: UIKit.UIBlurEffect.Style = .light, darkBlurStyle: UIKit.UIBlurEffect.Style = .dark)
+  #endif
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s8NNUICore17BlurredBackgroundV4bodyQrvp", 0) __
+}
+@_Concurrency.MainActor @preconcurrency public struct WebViewContainer : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public let urlString: Swift.String
+  @_Concurrency.MainActor @preconcurrency public let isSupportNewTab: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public let isBackgroundSoundMuted: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public let isSystemSoundMuted: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public let backgroundColor: SwiftUICore.Color
+  @_Concurrency.MainActor @preconcurrency public let injectedJS: Swift.String?
+  @_Concurrency.MainActor @preconcurrency public var willNavigateToURL: ((Foundation.URL) -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var navigateToURL: ((Foundation.URL) -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var closeWeb: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var navigateToURLFail: (() -> Swift.Void)?
+  @_Concurrency.MainActor @preconcurrency public var openNewTab: ((Foundation.URL) -> Swift.Void)?
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency public init(_ urlString: Swift.String, isSupportNewTab: Swift.Bool = false, isBackgroundSoundMuted: Swift.Bool = false, isSystemSoundMuted: Swift.Bool = false, backgroundColor: SwiftUICore.Color = .black, injectedJS: Swift.String? = nil, willNavigateToURL: ((Foundation.URL) -> Swift.Void)? = nil, navigateToURL: ((Foundation.URL) -> Swift.Void)? = nil, closeWeb: (() -> Swift.Void)? = nil, navigateToURLFail: (() -> Swift.Void)? = nil, openNewTab: ((Foundation.URL) -> Swift.Void)? = nil)
+  #endif
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s8NNUICore16WebViewContainerV4bodyQrvp", 0) __
+}
+public struct NNNotificationViewConfig<Background> where Background : SwiftUICore.View {
+  public let widthRatio: CoreFoundation.CGFloat
+  public let dimmedBackgroundView: (() -> Background)?
+  public let contentBackgroundColor: SwiftUICore.Color
+  public let animationDuration: Swift.Double
+  public let animation: SwiftUICore.Animation
+  #if compiler(>=5.3) && $NonescapableTypes
+  public init(widthRatio: CoreFoundation.CGFloat = 0.8, dimmedBackgroundView: (() -> Background)? = nil, contentBackgroundColor: SwiftUICore.Color = Color(hex: "#25242d"), animationDuration: Swift.Double = 0.23, animation: SwiftUICore.Animation = .interpolatingSpring(stiffness: 200, damping: 30))
+  #endif
+}
+extension NNUICore.NNNotificationViewConfig where Background == SwiftUICore.EmptyView {
+  public init()
+}
+@_Concurrency.MainActor @preconcurrency public struct NNNotificationView<Background, Title, TabView, Content> : SwiftUICore.View where Background : SwiftUICore.View, Title : SwiftUICore.View, TabView : SwiftUICore.View, Content : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public let config: NNUICore.NNNotificationViewConfig<Background>
+  @SwiftUICore.Binding @_projectedValueProperty($isShown) @_Concurrency.MainActor @preconcurrency public var isShown: Swift.Bool {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    nonmutating set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    nonmutating _modify
+  }
+  @_Concurrency.MainActor @preconcurrency public var $isShown: SwiftUICore.Binding<Swift.Bool> {
+    get
+  }
+  @_Concurrency.MainActor @preconcurrency public let title: () -> Title
+  @_Concurrency.MainActor @preconcurrency public let tabView: () -> TabView
+  @_Concurrency.MainActor @preconcurrency public let content: () -> Content
+  @_Concurrency.MainActor @preconcurrency public init(config: NNUICore.NNNotificationViewConfig<Background>, isShown: SwiftUICore.Binding<Swift.Bool>, title: @escaping () -> Title, tabView: @escaping () -> TabView, content: @escaping () -> Content)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s8NNUICore18NNNotificationViewV4bodyQrvp", 0) __<Background, Title, TabView, Content>
+}
+extension SwiftUICore.Color {
+  public init(hex: Swift.String)
+  public init(hexARGB: Swift.String)
+}
+extension UIKit.UIColor {
+  convenience public init(hex: Swift.String)
+  convenience public init(hexARGB: Swift.String)
+}
+@_Concurrency.MainActor @preconcurrency public struct PressableButtonStyle : SwiftUI.ButtonStyle {
+  @_Concurrency.MainActor @preconcurrency public init()
+  @_Concurrency.MainActor @preconcurrency public func makeBody(configuration: NNUICore.PressableButtonStyle.Configuration) -> some SwiftUICore.View
+  
+  public typealias Body = @_opaqueReturnTypeOf("$s8NNUICore20PressableButtonStyleV8makeBody13configurationQr7SwiftUI0cD13ConfigurationV_tF", 0) __
+}
+
+
+public typealias UserDefaultsKeys = Swift.String
+@propertyWrapper public struct UserDefaultsStorage<T> {
+  public init(key: NNUICore.UserDefaultsKeys)
+  #if compiler(>=5.3) && $NonescapableTypes
+  public var wrappedValue: T? {
+    get
+    set
+  }
+  #endif
+}
+@_Concurrency.MainActor @preconcurrency public struct Blur : SwiftUI.UIViewRepresentable {
+  @_Concurrency.MainActor @preconcurrency public var style: UIKit.UIBlurEffect.Style
+  @_Concurrency.MainActor @preconcurrency public func makeUIView(context: NNUICore.Blur.Context) -> UIKit.UIVisualEffectView
+  @_Concurrency.MainActor @preconcurrency public func updateUIView(_ uiView: UIKit.UIVisualEffectView, context: NNUICore.Blur.Context)
+  public typealias Body = Swift.Never
+  public typealias Coordinator = Swift.Void
+  public typealias UIViewType = UIKit.UIVisualEffectView
+}
+public struct Logger : Swift.Sendable {
+  public static let shared: NNUICore.Logger
+  public func log(_ string: Swift.String)
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func exportLogsAsZip() -> Foundation.URL?
+  #endif
+}
+@dynamicMemberLookup public struct NNLanguage : Swift.Codable, Swift.Equatable, Swift.Sendable {
+  public let languageCode: Swift.String
+  public let data: [Swift.String : [Swift.String : Swift.String]]
+  public subscript(dynamicMember key: Swift.String) -> Swift.String {
+    get
+  }
+  public init(languageCode: Swift.String = "en", data: [Swift.String : [Swift.String : Swift.String]] = .init())
+  public static func == (a: NNUICore.NNLanguage, b: NNUICore.NNLanguage) -> Swift.Bool
+  public func encode(to encoder: any Swift.Encoder) throws
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension NNUICore.BundleManager {
+  final public func registerLocalizations()
+  final public func register(localizationFrom json: Swift.String, for code: Swift.String)
+}
+extension SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public func bounce<T>(onChangeOf value: T) -> some SwiftUICore.View where T : Swift.Equatable
+  
+}
+extension NNUICore.BundleManager {
+  final public func registerIcons(for scheme: SwiftUICore.ColorScheme, extensionType type: NNUICore.BundleManager.IconExtensionType = .png)
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func loadIcon(for name: Swift.String, scheme: SwiftUICore.ColorScheme) -> UIKit.UIImage?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func getCachedIconURL(for name: Swift.String, scheme: SwiftUICore.ColorScheme) -> Foundation.URL?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func getPNGImageURL(for name: Swift.String, scheme: SwiftUICore.ColorScheme, scale: CoreFoundation.CGFloat = 3.0) -> Foundation.URL?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func getPNGImageURL(for name: Swift.String, bundleName: Swift.String, scheme: SwiftUICore.ColorScheme, scale: CoreFoundation.CGFloat = 3.0) -> Foundation.URL?
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func loadImageSynchronously(for name: Swift.String, scheme: SwiftUICore.ColorScheme) -> UIKit.UIImage?
+  #endif
+}
+public struct ShakeEffect : SwiftUICore.GeometryEffect {
+  public var animatableData: CoreFoundation.CGFloat
+  public init(isEnabled: Swift.Bool = true, offset: CoreFoundation.CGFloat = 0.5, shakesPerUnit: CoreFoundation.CGFloat = 1.0, animatableData: CoreFoundation.CGFloat)
+  public func effectValue(size: CoreFoundation.CGSize) -> SwiftUICore.ProjectionTransform
+  public typealias AnimatableData = CoreFoundation.CGFloat
+  public typealias Body = Swift.Never
+}
+public protocol ColorPaletteProtocol : Swift.Decodable, Swift.Sendable {
+  var isColorPaletteValid: Swift.Bool { get }
+}
+public struct ColorPalette : NNUICore.ColorPaletteProtocol {
+  public typealias ColorShades = [Swift.String : Swift.String]
+  public var root: NNUICore.ColorPalette.RootShades
+  public var primary: NNUICore.ColorPalette.ColorShades
+  public var secondary: NNUICore.ColorPalette.ColorShades
+  public var informative: NNUICore.ColorPalette.ColorShades
+  public var negative: NNUICore.ColorPalette.ColorShades
+  public var positive: NNUICore.ColorPalette.ColorShades
+  public var warning: NNUICore.ColorPalette.ColorShades
+  public var neutral: NNUICore.ColorPalette.ColorShades
+  public var tertiary: NNUICore.ColorPalette.ColorShades
+  public var white: NNUICore.ColorPalette.ColorShades
+  public var black: NNUICore.ColorPalette.ColorShades?
+  public struct RootShades : Swift.Decodable, Swift.Sendable {
+    public let primary: Swift.String
+    public let secondary: Swift.String
+    public let tertiary: Swift.String
+    public init(from decoder: any Swift.Decoder) throws
+  }
+  public var isColorPaletteValid: Swift.Bool {
+    get
+  }
+  public init()
+  public init(from decoder: any Swift.Decoder) throws
+}
+extension NNUICore.BundleManager {
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func registerColors<T>(as type: T.Type = ColorPalette.self, for bundleName: Swift.String? = nil) where T : NNUICore.ColorPaletteProtocol
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func register<T>(colorsFrom json: Swift.String, as type: T.Type = ColorPalette.self, for bundle: Swift.String? = nil) where T : NNUICore.ColorPaletteProtocol
+  #endif
+}
+public struct ScaleEffect : SwiftUICore.GeometryEffect {
+  public var animatableData: CoreFoundation.CGFloat
+  public init(isEnabled: Swift.Bool = true, amplitude: CoreFoundation.CGFloat = 0.05, animatableData: CoreFoundation.CGFloat)
+  public func effectValue(size: CoreFoundation.CGSize) -> SwiftUICore.ProjectionTransform
+  public typealias AnimatableData = CoreFoundation.CGFloat
+  public typealias Body = Swift.Never
+}
+public struct FloatingEffect : SwiftUICore.GeometryEffect {
+  public var animatableData: CoreFoundation.CGFloat
+  public init(isEnabled: Swift.Bool = true, xRange: CoreFoundation.CGFloat = 0, yRange: CoreFoundation.CGFloat = 10, speed: Swift.Double = 1.5, animatableData: CoreFoundation.CGFloat)
+  public func effectValue(size: CoreFoundation.CGSize) -> SwiftUICore.ProjectionTransform
+  public typealias AnimatableData = CoreFoundation.CGFloat
+  public typealias Body = Swift.Never
+}
+public protocol NavigationDestination : Swift.Hashable {
+  associatedtype DestinationView : SwiftUICore.View
+  func makeView() -> Self.DestinationView
+}
+public struct AnyNavigationDestination : Swift.Hashable {
+  public init<D>(_ destination: D) where D : NNUICore.NavigationDestination
+  public func makeView() -> some SwiftUICore.View
+  
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (lhs: NNUICore.AnyNavigationDestination, rhs: NNUICore.AnyNavigationDestination) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public class NavigationState : Combine.ObservableObject {
+  @Combine.Published @_projectedValueProperty($path) public var path: [NNUICore.AnyNavigationDestination] {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  public var $path: Combine.Published<[NNUICore.AnyNavigationDestination]>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  public init(path: [NNUICore.AnyNavigationDestination] = [])
+  public func push(_ destination: NNUICore.AnyNavigationDestination)
+  public func pop()
+  public func popToRoot()
+  public func popTo(_ destination: NNUICore.AnyNavigationDestination)
+  public func setPath(_ newPath: [NNUICore.AnyNavigationDestination])
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+extension NNUICore.NavigationState {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getHashAt(index: Swift.Int) -> Swift.Int?
+  #endif
+  public func getAllHashes() -> [Swift.Int]
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func findIndexByHash(_ hash: Swift.Int) -> Swift.Int?
+  #endif
+  public func popToHash(_ hash: Swift.Int)
+  public func containsHash(_ hash: Swift.Int) -> Swift.Bool
+}
+@_Concurrency.MainActor @preconcurrency public struct CommonNavigationStackNonBinding<RootView> : SwiftUICore.View where RootView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(navigationState: NNUICore.NavigationState = NavigationState(), rootView: () -> RootView)
+  @_Concurrency.MainActor @preconcurrency public init(externalNavigationState: NNUICore.NavigationState, rootView: () -> RootView)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s8NNUICore31CommonNavigationStackNonBindingV4bodyQrvp", 0) __<RootView>
+}
+@_Concurrency.MainActor @preconcurrency public struct CommonNavigationStack<RootView> : SwiftUICore.View where RootView : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(path: SwiftUICore.Binding<[NNUICore.AnyNavigationDestination]>, rootView: () -> RootView)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s8NNUICore21CommonNavigationStackV4bodyQrvp", 0) __<RootView>
+}
+public struct NavigationEnvironment {
+  public let push: (NNUICore.AnyNavigationDestination) -> Swift.Void
+  public let pop: () -> Swift.Void
+  public let popToRoot: () -> Swift.Void
+  public let popTo: (NNUICore.AnyNavigationDestination) -> Swift.Void
+  public let popToHash: (Swift.Int) -> Swift.Void
+  public let getCurrentHash: () -> Swift.Int
+  public init(push: @escaping (NNUICore.AnyNavigationDestination) -> Swift.Void, pop: @escaping () -> Swift.Void, popToRoot: @escaping () -> Swift.Void, popTo: @escaping (NNUICore.AnyNavigationDestination) -> Swift.Void = { _ in }, popToHash: @escaping (Swift.Int) -> Swift.Void = { _ in }, getCurrentHash: @escaping () -> Swift.Int = { return 0 })
+}
+extension SwiftUICore.EnvironmentValues {
+  public var navigation: NNUICore.NavigationEnvironment {
+    get
+    set
+  }
+}
+public class NavigationViewModel : Combine.ObservableObject {
+  @Combine.Published @_projectedValueProperty($navigationState) public var navigationState: NNUICore.NavigationState {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    _modify
+  }
+  public var $navigationState: Combine.Published<NNUICore.NavigationState>.Publisher {
+    get
+    @available(iOS 14.0, tvOS 14.0, watchOS 7.0, macOS 11.0, *)
+    set
+  }
+  public init()
+  public func navigate(to destination: NNUICore.AnyNavigationDestination)
+  public func goBack()
+  public func goToRoot()
+  public func goBackTo(_ destination: NNUICore.AnyNavigationDestination)
+  public typealias ObjectWillChangePublisher = Combine.ObservableObjectPublisher
+  @objc deinit
+}
+extension NNUICore.NavigationViewModel {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getHashAt(index: Swift.Int) -> Swift.Int?
+  #endif
+  public func getAllHashes() -> [Swift.Int]
+  public func popToHash(_ hash: Swift.Int)
+  public func pathContainsHash(_ hash: Swift.Int) -> Swift.Bool
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getCurrentScreenHash() -> Swift.Int?
+  #endif
+}
+extension NNUICore.BundleManager {
+  #if compiler(>=5.3) && $NonescapableTypes
+  final public func registerFonts(for bundleName: Swift.String? = nil)
+  #endif
+  final public func getFontPostScriptName(from url: Foundation.URL) -> Swift.String
+}
+extension NNUICore.BundleManager {
+  final public func registerGradients()
+  final public func register(gradientsFrom json: Swift.String)
+}
+@_Concurrency.MainActor @preconcurrency public struct WrappingHStack<Data, Content> : SwiftUICore.View where Data : Swift.RandomAccessCollection, Content : SwiftUICore.View, Data.Element : Swift.Hashable {
+  @_Concurrency.MainActor @preconcurrency public init(_ data: Data, rowCount: SwiftUICore.Binding<Swift.Int>, itemSpacing: CoreFoundation.CGFloat, alignment: SwiftUICore.HorizontalAlignment, @SwiftUICore.ViewBuilder content: @escaping (Data.Element) -> Content)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s8NNUICore14WrappingHStackV4bodyQrvp", 0) __<Data, Content>
+}
+@_hasMissingDesignatedInitializers public class MiniGameResourceManager {
+  nonisolated(unsafe) public static let shared: NNUICore.MiniGameResourceManager
+  public func syncResources(gameName: Swift.String, zipUrlString: Swift.String, serverVersion: Swift.String, completion: @escaping (Swift.Bool) -> Swift.Void)
+  public func prepare(gameName: Swift.String)
+  @objc deinit
+}
+extension Swift.String {
+  public static var appVersion: Swift.String {
+    get
+  }
+  public var snakeToCamel: Swift.String {
+    get
+  }
+  public var color: SwiftUICore.Color {
+    get
+  }
+  public func widthOfString(usingFont font: UIKit.UIFont) -> CoreFoundation.CGFloat
+  public func heightOfString(usingFont font: UIKit.UIFont) -> CoreFoundation.CGFloat
+}
+@_Concurrency.MainActor @preconcurrency public struct MarqueeText : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public var text: Swift.String
+  @_Concurrency.MainActor @preconcurrency public var font: UIKit.UIFont
+  @_Concurrency.MainActor @preconcurrency public var leftFade: CoreFoundation.CGFloat
+  @_Concurrency.MainActor @preconcurrency public var rightFade: CoreFoundation.CGFloat
+  @_Concurrency.MainActor @preconcurrency public var startDelay: Swift.Double
+  @_Concurrency.MainActor @preconcurrency public var alignment: SwiftUICore.Alignment
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency public init(text: Swift.String, font: UIKit.UIFont, leftFade: CoreFoundation.CGFloat, rightFade: CoreFoundation.CGFloat, startDelay: Swift.Double, alignment: SwiftUICore.Alignment? = nil)
+  #endif
+  public typealias Body = @_opaqueReturnTypeOf("$s8NNUICore11MarqueeTextV4bodyQrvp", 0) __
+}
+extension NNUICore.MarqueeText {
+  @_Concurrency.MainActor @preconcurrency public func makeCompact(_ compact: Swift.Bool = true) -> NNUICore.MarqueeText
+}
+@_Concurrency.MainActor @preconcurrency public struct KFImageLoader : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public init(url: Foundation.URL, size: CoreFoundation.CGSize, isScaleToFit: Swift.Bool)
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s8NNUICore13KFImageLoaderV4bodyQrvp", 0) __
+}
+public protocol SegmentProtocol {
+  var id: Swift.String { get }
+  #if compiler(>=5.3) && $NonescapableTypes
+  var title: Swift.String? { get }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  var icon: Swift.String? { get }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  func getAssetIconName(isSelected: Swift.Bool) -> Swift.String?
+  #endif
+}
+extension NNUICore.SegmentProtocol {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func getAssetIconName(isSelected: Swift.Bool) -> Swift.String?
+  #endif
+}
+public struct SegmentConfig {
+  public let id: Swift.String
+  public let height: CoreFoundation.CGFloat
+  public let itemFont: SwiftUICore.Font
+  public let iconSize: CoreFoundation.CGSize
+  public var containerColor: SwiftUICore.LinearGradient
+  public var selectedColor: SwiftUICore.LinearGradient
+  public var unselectedColor: SwiftUICore.LinearGradient
+  public var selectedBackgroundColor: SwiftUICore.LinearGradient
+  public var unselectedBackgroundColor: SwiftUICore.LinearGradient
+  public var buttonVerticalPadding: CoreFoundation.CGFloat
+  public var buttonHorizontalPadding: CoreFoundation.CGFloat
+  public var animationDuration: CoreFoundation.CGFloat
+  public var isShadowEnabled: Swift.Bool
+  public var isAnimationEnabled: Swift.Bool
+  public init(id: Swift.String = UUID().uuidString, height: CoreFoundation.CGFloat = 48, itemFont: SwiftUICore.Font = .title3, iconSize: CoreFoundation.CGSize = CGSize(width: 30, height: 30), containerColor: SwiftUICore.LinearGradient = LinearGradient(colors: [.black.opacity(0.5)],
+                                                                startPoint: .leading,
+                                                                endPoint: .trailing), selectedColor: SwiftUICore.LinearGradient = LinearGradient(colors: [.black],
+                                                               startPoint: .leading,
+                                                               endPoint: .trailing), unselectedColor: SwiftUICore.LinearGradient = LinearGradient(colors: [.white],
+                                                                 startPoint: .leading,
+                                                                 endPoint: .trailing), selectedBackgroundColor: SwiftUICore.LinearGradient = LinearGradient(colors: [.white],
+                                                                         startPoint: .leading,
+                                                                         endPoint: .trailing), unselectedBackgroundColor: SwiftUICore.LinearGradient = LinearGradient(colors: [.clear],
+                                                                           startPoint: .leading,
+                                                                           endPoint: .trailing), buttonVerticalPadding: CoreFoundation.CGFloat = 5, buttonHorizontalPadding: CoreFoundation.CGFloat = 5, animationDuration: CoreFoundation.CGFloat = 0.23, isShadowEnabled: Swift.Bool = true, isAnimationEnabled: Swift.Bool = false)
+}
+@_Concurrency.MainActor @preconcurrency public struct Segment<Item, SegmentShape> : SwiftUICore.View where Item : NNUICore.SegmentProtocol, Item : Swift.Equatable, SegmentShape : SwiftUICore.Shape {
+  @_Concurrency.MainActor @preconcurrency public var items: [Item]
+  @_Concurrency.MainActor @preconcurrency public var config: NNUICore.SegmentConfig
+  @_Concurrency.MainActor @preconcurrency public var segmentShape: SegmentShape
+  #if compiler(>=5.3) && $NonescapableTypes
+  @SwiftUICore.Binding @_projectedValueProperty($selectedItem) @_Concurrency.MainActor @preconcurrency public var selectedItem: Item? {
+    get
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    nonmutating set
+    @available(iOS 13.0, tvOS 13.0, watchOS 6.0, macOS 10.15, *)
+    nonmutating _modify
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency public var $selectedItem: SwiftUICore.Binding<Item?> {
+    get
+  }
+  #endif
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency public init(items: [Item], config: NNUICore.SegmentConfig = SegmentConfig(), segmentShape: SegmentShape, selectedItem: SwiftUICore.Binding<Item?>)
+  #endif
+  @_Concurrency.MainActor @preconcurrency public var body: some SwiftUICore.View {
+    get
+  }
+  public typealias Body = @_opaqueReturnTypeOf("$s8NNUICore7SegmentV4bodyQrvp", 0) __<Item, SegmentShape>
+}
+@_Concurrency.MainActor @preconcurrency public struct UnderlineIfNeeded : SwiftUICore.ViewModifier {
+  @_Concurrency.MainActor @preconcurrency public init(isActive: Swift.Bool, color: SwiftUICore.Color)
+  @_Concurrency.MainActor @preconcurrency public func body(content: NNUICore.UnderlineIfNeeded.Content) -> some SwiftUICore.View
+  
+  public typealias Body = @_opaqueReturnTypeOf("$s8NNUICore17UnderlineIfNeededV4body7contentQr7SwiftUI21_ViewModifier_ContentVyACG_tF", 0) __
+}
+extension Foundation.Calendar {
+  #if compiler(>=5.3) && $NonescapableTypes
+  public func isSameDay(_ date1: Foundation.Date?, _ date2: Foundation.Date?) -> Swift.Bool
+  #endif
+  public static var vietnamese: Foundation.Calendar {
+    get
+  }
+  public var vietnameseShortWeekdaySymbols: [Swift.String] {
+    get
+  }
+}
+@_Concurrency.MainActor @preconcurrency public struct Shimmer : SwiftUICore.ViewModifier {
+  public enum Mode {
+    case mask
+    case overlay(blendMode: SwiftUICore.BlendMode = .sourceAtop)
+    case background
+  }
+  @_Concurrency.MainActor @preconcurrency public init(animation: SwiftUICore.Animation = Self.defaultAnimation, gradient: SwiftUICore.Gradient = Self.defaultGradient, bandSize: CoreFoundation.CGFloat = 0.3, mode: NNUICore.Shimmer.Mode = .mask)
+  @_Concurrency.MainActor @preconcurrency public static let defaultAnimation: SwiftUICore.Animation
+  @_Concurrency.MainActor @preconcurrency public static let defaultGradient: SwiftUICore.Gradient
+  @_Concurrency.MainActor @preconcurrency public func body(content: NNUICore.Shimmer.Content) -> some SwiftUICore.View
+  
+  @_Concurrency.MainActor @preconcurrency public func applyingGradient(to content: NNUICore.Shimmer.Content) -> some SwiftUICore.View
+  
+  public typealias Body = @_opaqueReturnTypeOf("$s8NNUICore7ShimmerV4body7contentQr7SwiftUI21_ViewModifier_ContentVyACG_tF", 0) __
+}
+extension SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public func shimmering(active: Swift.Bool = true, animation: SwiftUICore.Animation = Shimmer.defaultAnimation, gradient: SwiftUICore.Gradient = Shimmer.defaultGradient, bandSize: CoreFoundation.CGFloat = 0.3, mode: NNUICore.Shimmer.Mode = .mask) -> some SwiftUICore.View
+  
+  @available(*, deprecated, message: "Use shimmering(active:animation:gradient:bandSize:) instead.")
+  @_Concurrency.MainActor @preconcurrency public func shimmering(active: Swift.Bool = true, duration: Swift.Double, bounce: Swift.Bool = false, delay: Swift.Double = 0.25) -> some SwiftUICore.View
+  
+}
+extension SwiftUICore.Text {
+  public init(_ string: Swift.String, configure: (inout Foundation.AttributedString) -> Swift.Void)
+}
+public struct RoundedCorner : SwiftUICore.Shape {
+  public var radius: CoreFoundation.CGFloat
+  public var corners: UIKit.UIRectCorner
+  nonisolated public func path(in rect: CoreFoundation.CGRect) -> SwiftUICore.Path
+  public typealias AnimatableData = SwiftUICore.EmptyAnimatableData
+  public typealias Body = SwiftUICore._ShapeView<NNUICore.RoundedCorner, SwiftUICore.ForegroundStyle>
+}
+
+extension Foundation.Date {
+  public func getStandardDayMonthYear() -> Swift.String
+  public func getISOFormattedString() -> Swift.String
+}
+public struct NotchSheetConfig {
+  public let maxDetent: SwiftUI.PresentationDetent
+  public let cornerRadius: CoreFoundation.CGFloat
+  public let isInteractiveDismissDisabled: Swift.Bool
+  public let sheetBackgroundColor: SwiftUICore.Color
+  public let contentBackgroundColor: SwiftUICore.Color
+  public let notchWidth: CoreFoundation.CGFloat
+  public let isTapOutsideToDismiss: Swift.Bool
+  public let shouldIgnoreKeyboard: Swift.Bool
+  public init(maxDetent: SwiftUI.PresentationDetent = .fraction(0.99), cornerRadius: CoreFoundation.CGFloat = 20, isInteractiveDismissDisabled: Swift.Bool = false, sheetBackgroundColor: SwiftUICore.Color = .clear, contentBackgroundColor: SwiftUICore.Color = .clear, notchWidth: CoreFoundation.CGFloat = 110, isTapOutsideToDismiss: Swift.Bool = false, shouldIgnoreKeyboard: Swift.Bool = false)
+}
+public struct NotchedTopShape : SwiftUICore.Shape {
+  public var cornerRadius: CoreFoundation.CGFloat
+  public var notchWidth: CoreFoundation.CGFloat
+  public var notchHeight: CoreFoundation.CGFloat
+  public var notchCornerRadius: CoreFoundation.CGFloat
+  public init(cornerRadius: CoreFoundation.CGFloat = 20, notchWidth: CoreFoundation.CGFloat = 110, notchHeight: CoreFoundation.CGFloat = 25, notchCornerRadius: CoreFoundation.CGFloat = 15)
+  nonisolated public func path(in rect: CoreFoundation.CGRect) -> SwiftUICore.Path
+  public typealias AnimatableData = SwiftUICore.EmptyAnimatableData
+  public typealias Body = SwiftUICore._ShapeView<NNUICore.NotchedTopShape, SwiftUICore.ForegroundStyle>
+}
+extension SwiftUICore.View {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency public func notchSheet<Content, Close>(show: SwiftUICore.Binding<Swift.Bool>, config: NNUICore.NotchSheetConfig = NotchSheetConfig(), header: (() -> Close)? = { EmptyView() }, content: (() -> Content)?) -> some SwiftUICore.View where Content : SwiftUICore.View, Close : SwiftUICore.View
+  
+  #endif
+}
+extension SwiftUICore.View {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency public func sheetCustom<SheetContent, Header>(isPresented: SwiftUICore.Binding<Swift.Bool>, header: (() -> Header)? = { EmptyView() }, onDismiss: (() -> Swift.Void)? = nil, backgroundOpacity: CoreFoundation.CGFloat = 0.35, cornerRadius: CoreFoundation.CGFloat = 24, isDismissableByDrag: Swift.Bool = true, isDismissableByTapOutside: Swift.Bool = true, @SwiftUICore.ViewBuilder content: @escaping () -> SheetContent) -> some SwiftUICore.View where SheetContent : SwiftUICore.View, Header : SwiftUICore.View
+  
+  #endif
+}
+@_Concurrency.MainActor @preconcurrency public struct BottomSheetModifier<SheetContent, Header> : SwiftUICore.ViewModifier where SheetContent : SwiftUICore.View, Header : SwiftUICore.View {
+  @_Concurrency.MainActor @preconcurrency public func body(content host: NNUICore.BottomSheetModifier<SheetContent, Header>.Content) -> some SwiftUICore.View
+  
+  @_Concurrency.MainActor @preconcurrency public func sheetView(screenHeight: CoreFoundation.CGFloat) -> some SwiftUICore.View
+  
+  @_Concurrency.MainActor @preconcurrency public func dragGesture() -> some SwiftUICore.Gesture
+  
+  @_Concurrency.MainActor @preconcurrency public func hideKeyboard()
+  @_Concurrency.MainActor @preconcurrency public func dismiss()
+  public typealias Body = @_opaqueReturnTypeOf("$s8NNUICore19BottomSheetModifierV4body7contentQr7SwiftUI05_ViewD8_ContentVyACyxq_GG_tF", 0) __<SheetContent, Header>
+}
+public func CurvedTabBarShapeView(bgColor: SwiftUICore.Color = .white) -> some SwiftUICore.View
+
+public struct CurvedTabBarShape : SwiftUICore.Shape {
+  nonisolated public func path(in rect: CoreFoundation.CGRect) -> SwiftUICore.Path
+  public typealias AnimatableData = SwiftUICore.EmptyAnimatableData
+  public typealias Body = SwiftUICore._ShapeView<NNUICore.CurvedTabBarShape, SwiftUICore.ForegroundStyle>
+}
+public enum SensoryFeedbackType {
+  case success
+  case warning
+  case error
+  case selection
+  case increase
+  case decrease
+  case alignment
+  case levelChange
+  case impactFlex(flexibility: NNUICore.SensoryFeedbackType.ImpactFlexibility, intensity: Swift.Double)
+  case impactWeight(weight: NNUICore.SensoryFeedbackType.ImpactWeight, intensity: Swift.Double)
+  case stop
+  public enum ImpactFlexibility : Swift.Equatable {
+    case rigid
+    case solid
+    case soft
+    public static func == (a: NNUICore.SensoryFeedbackType.ImpactFlexibility, b: NNUICore.SensoryFeedbackType.ImpactFlexibility) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum ImpactWeight : Swift.Equatable {
+    case light
+    case medium
+    case heavy
+    public static func == (a: NNUICore.SensoryFeedbackType.ImpactWeight, b: NNUICore.SensoryFeedbackType.ImpactWeight) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+@_Concurrency.MainActor @preconcurrency public struct SensoryFeedbackModifier<T> : SwiftUICore.ViewModifier where T : Swift.Equatable {
+  @_Concurrency.MainActor @preconcurrency public var isEnabled: Swift.Bool
+  @_Concurrency.MainActor @preconcurrency public var feedback: NNUICore.SensoryFeedbackType
+  @_Concurrency.MainActor @preconcurrency public var trigger: T
+  @_Concurrency.MainActor @preconcurrency public var condition: ((T, T) -> Swift.Bool)?
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency public init(isEnabled: Swift.Bool = true, feedback: NNUICore.SensoryFeedbackType = .selection, trigger: T, condition: ((T, T) -> Swift.Bool)? = nil)
+  #endif
+  @_Concurrency.MainActor @preconcurrency public func body(content: NNUICore.SensoryFeedbackModifier<T>.Content) -> some SwiftUICore.View
+  
+  public typealias Body = @_opaqueReturnTypeOf("$s8NNUICore23SensoryFeedbackModifierV4body7contentQr7SwiftUI05_ViewD8_ContentVyACyxGG_tF", 0) __<T>
+}
+extension SwiftUICore.View {
+  #if compiler(>=5.3) && $NonescapableTypes
+  @_Concurrency.MainActor @preconcurrency public func nnSensoryFeedback<T>(isEnabled: Swift.Bool = true, _ feedback: NNUICore.SensoryFeedbackType = .selection, trigger: T, condition: ((T, T) -> Swift.Bool)? = nil) -> some SwiftUICore.View where T : Swift.Equatable
+  
+  #endif
+}
+@_Concurrency.MainActor @preconcurrency public struct CapsuleTagModifier : SwiftUICore.ViewModifier {
+  @_Concurrency.MainActor @preconcurrency public init(borderColor: SwiftUICore.Color = .gray, lineWidth: CoreFoundation.CGFloat = 1)
+  @_Concurrency.MainActor @preconcurrency public func body(content: NNUICore.CapsuleTagModifier.Content) -> some SwiftUICore.View
+  
+  public typealias Body = @_opaqueReturnTypeOf("$s8NNUICore18CapsuleTagModifierV4body7contentQr7SwiftUI05_ViewD8_ContentVyACG_tF", 0) __
+}
+extension Swift.Dictionary where Key == Swift.String, Value == Swift.String {
+  public func snakeToCamelCaseForKeys() -> [Swift.String : Swift.String]
+}
+extension NNUICore.MiniGIconLoader : Swift.Sendable {}
+extension NNUICore.BundleManager.IconExtensionType : Swift.Equatable {}
+extension NNUICore.BundleManager.IconExtensionType : Swift.Hashable {}
+extension NNUICore.BundleManager.IconExtensionType : Swift.RawRepresentable {}
+extension NNUICore.BundleManager.Appearance : Swift.Hashable {}
+extension NNUICore.BundleManager.Appearance : Swift.RawRepresentable {}
+extension NNUICore.BlurredBackground : Swift.Sendable {}
+extension NNUICore.WebViewContainer : Swift.Sendable {}
+extension NNUICore.NNNotificationView : Swift.Sendable {}
+extension NNUICore.PressableButtonStyle : Swift.Sendable {}
+extension NNUICore.Blur : Swift.Sendable {}
+extension NNUICore.CommonNavigationStackNonBinding : Swift.Sendable {}
+extension NNUICore.CommonNavigationStack : Swift.Sendable {}
+extension NNUICore.WrappingHStack : Swift.Sendable {}
+extension NNUICore.MarqueeText : Swift.Sendable {}
+extension NNUICore.KFImageLoader : Swift.Sendable {}
+extension NNUICore.Segment : Swift.Sendable {}
+extension NNUICore.UnderlineIfNeeded : Swift.Sendable {}
+extension NNUICore.Shimmer : Swift.Sendable {}
+extension NNUICore.BottomSheetModifier : Swift.Sendable {}
+extension NNUICore.SensoryFeedbackType.ImpactFlexibility : Swift.Hashable {}
+extension NNUICore.SensoryFeedbackType.ImpactWeight : Swift.Hashable {}
+extension NNUICore.SensoryFeedbackModifier : Swift.Sendable {}
+extension NNUICore.CapsuleTagModifier : Swift.Sendable {}
